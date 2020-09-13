@@ -8,3 +8,7 @@ Nesse repositório, você encontrará os seguintes arquivos:
 2. Scrit SQL das criações e manipulações das tabelas;
 3. Dashboards com os resultados obtidos;
 4. Documentação do projeto.
+
+Esse projeto faz parte do treinamento BlueShift Academy, para formação de profissionais na área de Engenharia de Dados. 
+
+Equipe responsável: Andréia Assis, Gustavo Gatta, Karin Esquina e Lusandro Araújo.
