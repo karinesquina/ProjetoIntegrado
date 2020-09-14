@@ -11,4 +11,4 @@ Nesse repositório, você encontrará os seguintes arquivos:
 
 Esse projeto faz parte do treinamento BlueShift Academy, para formação de profissionais na área de Engenharia de Dados. 
 
-Equipe responsável: Andréia Assis, Gustavo Gatta, Karin Esquina e Lusandro Araújo.
+Equipe responsável: Andréia Assis, Gustavo Gatta, Karin Esquina, Lusandro Araújo e Marcus Morales.
