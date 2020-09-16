@@ -1,0 +1,35 @@
+{
+	"name": "SQLBolsaFamilia",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Mes",
+				"type": "varchar"
+			},
+			{
+				"name": "Nome_municipio",
+				"type": "varchar"
+			},
+			{
+				"name": "UF",
+				"type": "varchar"
+			},
+			{
+				"name": "Valor_parcela",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Bolsa_Familia"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

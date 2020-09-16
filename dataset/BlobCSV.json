@@ -1,0 +1,46 @@
+{
+	"name": "BlobCSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "Auxilio emergêncial/Output_SP",
+				"container": "projetointegrado"
+			},
+			"columnDelimiter": ";",
+			"encodingName": "ISO-8859-1",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "mes_disponibilizacao",
+				"type": "String"
+			},
+			{
+				"name": "UF",
+				"type": "String"
+			},
+			{
+				"name": "cod_municipio",
+				"type": "String"
+			},
+			{
+				"name": "nome_municipio",
+				"type": "String"
+			},
+			{
+				"name": "valor_beneficio",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

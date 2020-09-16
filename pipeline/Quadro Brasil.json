@@ -1,0 +1,158 @@
+{
+	"name": "Quadro Brasil",
+	"properties": {
+		"activities": [
+			{
+				"name": "Quadro Brasil",
+				"description": "Copia os dados de IDHM, Renda média, renda per capita e Desemprego do Blob para o banco de dados SQL",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "COD",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "COD",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "UF",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "UF",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "desemprego_acima_18anos_2010",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Desemprego_acima_18_anos_2010",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "IDHM_2010",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IDHM_2010",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "IDHM_Renda_2010",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IDHM_Renda_2010",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "IDHM_Longevidade_2010",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IDHM_Longevidade_2010",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "IDHM_Educa_2010",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IDHM_Educa_2010",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "Renda_per_capita_2010",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Renda_per_capita_2010",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob12",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL12",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-09-16T13:15:09Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

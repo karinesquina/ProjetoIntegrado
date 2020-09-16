@@ -1,0 +1,262 @@
+{
+	"name": "Bolsa Familia",
+	"properties": {
+		"activities": [
+			{
+				"name": "Extract - Bolsa familia_SP",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/karin.esquina@blueshift.com.br/Bolsa_SP"
+				},
+				"linkedServiceName": {
+					"referenceName": "Databricks1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Blob  Bolsa familia SP",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Extract - Bolsa familia_SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"fileListPath": "projetointegrado/Bolsa Família/Output_SP/output_files.txt"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "mes_competencia",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Mes",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "nome_municipio",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Nome_municipio",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "UF",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "UF",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "valor_parcela",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Valor_parcela",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob3",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL3",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Extract - Bolsa familia_RJ",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/karin.esquina@blueshift.com.br/Bolsa_RJ"
+				},
+				"linkedServiceName": {
+					"referenceName": "Databricks1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Blob  Bolsa familia RJ",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Extract - Bolsa familia_RJ",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"fileListPath": "projetointegrado/Bolsa Família/Output_RJ/output_files.txt"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "mes_competencia",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Mes",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "nome_municipio",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Nome_municipio",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "UF",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "UF",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "valor_parcela",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Valor_parcela",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob4",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Sql4",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-09-16T13:15:09Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

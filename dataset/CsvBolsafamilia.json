@@ -1,0 +1,41 @@
+{
+	"name": "CsvBolsafamilia",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "Bolsa Família/Databricks_output",
+				"container": "projetointegrado"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "mes_competencia",
+				"type": "String"
+			},
+			{
+				"name": "nome_municipio",
+				"type": "String"
+			},
+			{
+				"name": "UF",
+				"type": "String"
+			},
+			{
+				"name": "valor_parcela",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

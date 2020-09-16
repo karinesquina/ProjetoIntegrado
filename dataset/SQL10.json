@@ -1,0 +1,41 @@
+{
+	"name": "SQL10",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Mes_Disponibilizacao",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "UF",
+				"type": "varchar"
+			},
+			{
+				"name": "Cod_municipio",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Nome_municipio",
+				"type": "varchar"
+			},
+			{
+				"name": "valor_beneficio",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Auxilio_Emergencial_MS"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
